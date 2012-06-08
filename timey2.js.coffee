@@ -1,8 +1,9 @@
 class window.Timey2
-  constructor: (@date=new Date()) ->
+  constructor: ->
 
   run: ->
-    console.log "timey at #{minutes}"
+    @date = new Date()
+    console.log "timey at #{@date.getMinutes()}"
     window.webkitNotifications.createNotification('', 'timey2', 'Time!').show()
     setTimout (=> @run), @milliseconds_to_wait()
 
