@@ -8,6 +8,7 @@ class window.Timey2
 
   notify: ->
     window.webkitNotifications.createNotification('', 'timey2', 'Time!').show()
+    true
 
   milliseconds_to_wait: ->
     1000 * @seconds_to_wait()
@@ -16,7 +17,7 @@ class window.Timey2
     (60 * @minutes_to_next_quarter()) + @seconds_left_till_minute()
 
   minutes_to_next_quarter: ->
-    15 - (@date.getMinutes() % 15)
+    14 - (@date.getMinutes() % 15)
 
   seconds_left_till_minute: ->
     60 - @date.getSeconds()
