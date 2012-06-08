@@ -4,7 +4,7 @@ class window.Timey2
   run: ->
     @date = new Date()
     console.log "timey at #{@date.getMinutes()}"
-    setTimout (=> @notify() and @run()), @milliseconds_to_wait()
+    setTimeout (=> @notify() and @run()), @milliseconds_to_wait()
 
   notify: ->
     window.webkitNotifications.createNotification('', 'timey2', 'Time!').show()
