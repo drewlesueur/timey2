@@ -1,12 +1,24 @@
 <!doctype html>
 <html>
-  <body> 
-    <input type="button" value="start" />
+<body> 
+  <input id="start-button" type="button" value="start" />
+  <h3>Timey is active</h3>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://coffeescript.org/extras/coffee-script.js"></script>
 <script type="text/coffeescript" src="timey2.js.coffee"></script>
 <script type="text/coffeescript"> 
-  document.body.onclick = -> webkitNotifications?.requestPermission()
+  hide_button = ->
+    $('input').remove()
+    $('h3').show()
+
+  $('h3').hide()
+  $('input').click -> webkitNotifications?.requestPermission hide_button
+
+  # 0 is permission allowed, wtf?
+
+  hide_button() if webkitNotifications.checkPermission() == 0
+
   timey = new Timey2()
   timey.run()
 </script>
